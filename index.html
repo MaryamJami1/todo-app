@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,31 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
-    <video src="./assests/c9020a573f8a3e9162ec96f29e07d210.mp4" autoplay loop muted>
 
+    <div class="heading">
+        <h1>To-Do List</h1>
+    </div>
 
-        <div class="container">
+    <div class="container">
+        <div class="content">
+            <div id="input">
+                <input type="text" id="input-value" placeholder="Add your todos" >
+                <button onclick="add()" >Add</button>
+            </div>
             
         </div>
-    </video>
+
+
+        <div id="li">
+
+        </div>
+    </div>
 
 
     <script src="app.js"></script>
 
 </body>
+
 </html>
