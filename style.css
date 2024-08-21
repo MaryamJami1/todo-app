@@ -4,5 +4,30 @@
 
 }
 body{
-    background-color: rgba(137, 43, 226, 0.196) !important;
+  background-image: url(./assests/milad-fakurian-HE1_K4_-QT8-unsplash.jpg);
+  background-size: cover;
+}
+
+.li{
+    list-style-type: none;
+    padding: 10px;
+    background-color: transparent;
+    box-shadow: 2px 1px 8px slategrey;
+    margin-bottom: 10px;
+    font-size: 16px;
+    text-transform: capitalize;
+
+}
+
+ul{
+    padding-left: 0px !important;
+  
+}
+
+.btnStyle{
+    border: none;
+    outline: none;
+    font-size: 18px;
+display: inline-block !important;
+background-color: transparent;
 }
