@@ -29,8 +29,8 @@ body {
     font-size: 16px;
     text-transform: capitalize;
     display: flex;
-    justify-content: space-between; /* Aligns text and buttons to opposite ends */
-    align-items: center; /* Centers items vertically */
+    justify-content: space-between;
+    align-items: center;
 }
 
 
