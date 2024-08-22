@@ -1,6 +1,8 @@
 let input = document.getElementById("input");
 let parent = document.getElementById("parent-li");
 
+
+
 function add() {
     if (input.value.trim() === "") {
         Swal.fire({
@@ -42,11 +44,18 @@ function add() {
     }
 }
 
+////////////////// remove list function
+
 function removelist(event) {
     event.target.closest("li").remove();
 }
 
 
+
+
+
+
+////////////////// edit list function
 
 function edit(event) {
     const li = event.target.closest("li");
