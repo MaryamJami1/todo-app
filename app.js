@@ -41,6 +41,7 @@ function add() {
         parent.appendChild(li);
 
         input.value = "";
+        saveData()
     }
 }
 
@@ -48,6 +49,7 @@ function add() {
 
 function removelist(event) {
     event.target.closest("li").remove();
+    saveData();
 }
 
 
@@ -80,6 +82,7 @@ function edit(event) {
             li.querySelector(".task-text").innerText = result.value.trim();
         }
     });
+    saveData();
 }
 
 
@@ -88,4 +91,18 @@ function edit(event) {
 
 function dlt() {
     parent.innerHTML = "";
+    saveData();
 }
+
+
+
+
+function saveData(){
+    localStorage.setItem("data", parent.innerHTML)
+  }
+
+  function showTask(){
+    parent.innerHTML = localStorage.getItem("data")
+  }
+
+  showTask()
