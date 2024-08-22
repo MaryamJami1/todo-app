@@ -50,7 +50,7 @@ function removelist(event) {
 
 function edit(event) {
     const li = event.target.closest("li");
- 
+
     const taskText = li.querySelector(".task-text").innerText;
 
     Swal.fire({
@@ -74,7 +74,7 @@ function edit(event) {
 }
 
 
-  
+
 
 
 function dlt() {
