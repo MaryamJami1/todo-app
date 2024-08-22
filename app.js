@@ -2,7 +2,6 @@ let input = document.getElementById("input");
 let parent = document.getElementById("parent-li");
 
 
-
 function add() {
     if (input.value.trim() === "") {
         Swal.fire({
@@ -25,14 +24,14 @@ function add() {
         let deleteBtn = document.createElement("button");
         deleteBtn.innerHTML = "<i class='fa-solid fa-trash'></i>";
         deleteBtn.className = "btnStyle1";
-        deleteBtn.setAttribute("type", "button")
+        deleteBtn.setAttribute("type", "button");
         deleteBtn.addEventListener("click", (event) => removelist(event));
         buttonSpan.appendChild(deleteBtn);
 
         let editBtn = document.createElement("button");
         editBtn.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>";
         editBtn.className = "btnStyle";
-        editBtn.setAttribute("type", "button")
+        editBtn.setAttribute("type", "button");
         editBtn.addEventListener("click", (event) => edit(event));
         buttonSpan.appendChild(editBtn);
 
@@ -41,27 +40,19 @@ function add() {
         parent.appendChild(li);
 
         input.value = "";
-        saveData()
+        saveData();
     }
 }
 
-////////////////// remove list function
-
+// Remove a task
 function removelist(event) {
     event.target.closest("li").remove();
     saveData();
 }
 
-
-
-
-
-
-////////////////// edit list function
-
+// Edit a task
 function edit(event) {
     const li = event.target.closest("li");
-
     const taskText = li.querySelector(".task-text").innerText;
 
     Swal.fire({
@@ -80,29 +71,32 @@ function edit(event) {
     }).then((result) => {
         if (result.isConfirmed) {
             li.querySelector(".task-text").innerText = result.value.trim();
+            saveData();
         }
     });
-    saveData();
 }
 
-
-
-////////////////// delete all lists function
-
+// Delete all tasks
 function dlt() {
     parent.innerHTML = "";
     saveData();
 }
 
+// Save the list to localStorage
+function saveData() {
+    localStorage.setItem("data", parent.innerHTML);
+}
 
+// Load the list from localStorage
+function showTask() {
+    parent.innerHTML = localStorage.getItem("data") || "";
+    document.querySelectorAll(".btnStyle1").forEach(button => {
+        button.addEventListener("click", (event) => removelist(event));
+    });
 
+    document.querySelectorAll(".btnStyle").forEach(button => {
+        button.addEventListener("click", (event) => edit(event));
+    });
+}
 
-function saveData(){
-    localStorage.setItem("data", parent.innerHTML)
-  }
-
-  function showTask(){
-    parent.innerHTML = localStorage.getItem("data")
-  }
-
-  showTask()
+showTask();
