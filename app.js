@@ -1,75 +1,82 @@
 let input = document.getElementById("input");
-let parent = document.getElementById("parent-li")
+let parent = document.getElementById("parent-li");
 
 function add() {
-    if (input.value == "") {
+    if (input.value.trim() === "") {
         Swal.fire({
-
             text: "Please write a task!",
             icon: "warning",
             confirmButtonColor: "#3085d6",
-
-        })
-    }
-    else {
-        let inputValue = input.value;
+        });
+    } else {
+        let inputValue = input.value.trim();
         let li = document.createElement("li");
-        li.innerHTML = inputValue;
-        li.className = "li"
-        parent.appendChild(li)
+        li.className = "li";
 
-        let deleteBtn = document.createElement("button")
+        let textSpan = document.createElement("span");
+        textSpan.className = "task-text";
+        textSpan.innerText = inputValue;
+
+        let buttonSpan = document.createElement("span");
+        buttonSpan.className = "button-container";
+
+        let deleteBtn = document.createElement("button");
         deleteBtn.innerHTML = "<i class='fa-solid fa-trash'></i>";
-        deleteBtn.setAttribute("onclick", "removelist(event)")
+        deleteBtn.className = "btnStyle1";
         deleteBtn.setAttribute("type", "button")
-        deleteBtn.setAttribute("class", "btnStyle1")
-        li.appendChild(deleteBtn)
+        deleteBtn.addEventListener("click", (event) => removelist(event));
+        buttonSpan.appendChild(deleteBtn);
 
-        let editBtn = document.createElement("button")
-        editBtn.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>"
+        let editBtn = document.createElement("button");
+        editBtn.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>";
+        editBtn.className = "btnStyle";
         editBtn.setAttribute("type", "button")
-        editBtn.setAttribute("onclick", "edit(event)")
-        editBtn.setAttribute("class", "btnStyle")
-        li.appendChild(editBtn)
+        editBtn.addEventListener("click", (event) => edit(event));
+        buttonSpan.appendChild(editBtn);
 
+        li.appendChild(textSpan);
+        li.appendChild(buttonSpan);
+        parent.appendChild(li);
+
+        input.value = "";
     }
-    input.value = ""
 }
-
-
 
 function removelist(event) {
-    event.target.parentNode.parentNode.remove()
+    event.target.closest("li").remove();
 }
 
 
 
-    // var updated = prompt("update your task here", event.target.parentNode.parentNode.firstChild.nodeValue)
-  
-    // event.target.parentNode.parentNode.firstChild.nodeValue = updated
+function edit(event) {
+    const li = event.target.closest("li");
+ 
+    const taskText = li.querySelector(".task-text").innerText;
 
-
-    function edit(event) {
-        Swal.fire({
-          title: 'Update your task',
-          input: 'text',
-        //   inputLabel: 'Task',
-          inputValue: event.target.parentNode.parentNode.firstChild.nodeValue,
-          showCancelButton: true,
-          confirmButtonText: 'Update',
-          cancelButtonText: 'Cancel',
-          inputValidator: (value) => {
-            if (!value) {
-              return 'You need to write something!';
+    Swal.fire({
+        title: 'Update your task',
+        input: 'text',
+        inputLabel: 'Task',
+        inputValue: taskText,
+        showCancelButton: true,
+        confirmButtonText: 'Update',
+        cancelButtonText: 'Cancel',
+        inputValidator: (value) => {
+            if (!value.trim()) {
+                return 'You need to write something!';
             }
-          }
-        }).then((result) => {
-          if (result.isConfirmed) {
-            event.target.parentNode.parentNode.firstChild.nodeValue = result.value;
-          }
-        });
-      }
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            li.querySelector(".task-text").innerText = result.value.trim();
+        }
+    });
+}
+
+
+  
+
 
 function dlt() {
-    parent.innerHTML = ""
+    parent.innerHTML = "";
 }

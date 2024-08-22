@@ -3,13 +3,14 @@
     box-sizing: border-box;
 
 }
-body{
-  background-image: url(./assests/milad-fakurian-HE1_K4_-QT8-unsplash.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+
+body {
+    background-image: url(./assests/milad-fakurian-HE1_K4_-QT8-unsplash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.li{
+/* .li {
     list-style-type: none;
     padding: 10px;
     background-color: transparent;
@@ -17,26 +18,38 @@ body{
     margin-bottom: 10px;
     font-size: 16px;
     text-transform: capitalize;
+} */
 
+.li {
+    list-style-type: none;
+    padding: 10px;
+    background-color: transparent;
+    box-shadow: 2px 1px 8px slategrey;
+    margin-bottom: 10px;
+    font-size: 16px;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between; /* Aligns text and buttons to opposite ends */
+    align-items: center; /* Centers items vertically */
 }
 
-ul{
-padding-left: 0px !important;
+
+ul {
+    padding-left: 0px !important;
 }
 
-.btnStyle1{
+.btnStyle1 {
     border: none;
     outline: none;
     font-size: 18px;
-background-color: transparent;
-padding-left: 250px;
+    background-color: transparent;
 }
 
 
-.btnStyle{
+.btnStyle {
     border: none;
     outline: none;
     font-size: 18px;
-background-color: transparent;
-padding: 6px;
+    background-color: transparent;
+    padding: 6px;
 }
