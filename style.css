@@ -6,6 +6,7 @@
 body{
   background-image: url(./assests/milad-fakurian-HE1_K4_-QT8-unsplash.jpg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .li{
@@ -20,14 +21,22 @@ body{
 }
 
 ul{
-    padding-left: 0px !important;
-  
+padding-left: 0px !important;
 }
+
+.btnStyle1{
+    border: none;
+    outline: none;
+    font-size: 18px;
+background-color: transparent;
+padding-left: 250px;
+}
+
 
 .btnStyle{
     border: none;
     outline: none;
     font-size: 18px;
-display: inline-block !important;
 background-color: transparent;
+padding: 6px;
 }

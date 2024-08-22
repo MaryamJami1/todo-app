@@ -17,19 +17,20 @@ function add() {
         li.innerHTML = inputValue;
         li.className = "li"
         parent.appendChild(li)
+
         let deleteBtn = document.createElement("button")
         deleteBtn.innerHTML = "<i class='fa-solid fa-trash'></i>";
         deleteBtn.setAttribute("onclick", "removelist(event)")
         deleteBtn.setAttribute("type", "button")
-        deleteBtn.setAttribute("class", "btnStyle")
+        deleteBtn.setAttribute("class", "btnStyle1")
         li.appendChild(deleteBtn)
 
-    let editBtn = document.createElement("button")
-    editBtn.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>"
-    editBtn.setAttribute("type","button")
-    editBtn.setAttribute("onclick","edit(event)")
-    editBtn.setAttribute("class", "btnStyle")
-li.appendChild(editBtn)
+        let editBtn = document.createElement("button")
+        editBtn.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>"
+        editBtn.setAttribute("type", "button")
+        editBtn.setAttribute("onclick", "edit(event)")
+        editBtn.setAttribute("class", "btnStyle")
+        li.appendChild(editBtn)
 
     }
     input.value = ""
@@ -39,18 +40,36 @@ li.appendChild(editBtn)
 
 function removelist(event) {
     event.target.parentNode.parentNode.remove()
-
 }
 
 
 
-
-function edit(event){
-    var updated = prompt("updated task",event.target.parentNode.firstChild.nodeValue)
+    // var updated = prompt("update your task here", event.target.parentNode.parentNode.firstChild.nodeValue)
   
-    event.target.parentNode.parentNode.firstChild.nodeValue = updated
-  }
+    // event.target.parentNode.parentNode.firstChild.nodeValue = updated
+
+
+    function edit(event) {
+        Swal.fire({
+          title: 'Update your task',
+          input: 'text',
+        //   inputLabel: 'Task',
+          inputValue: event.target.parentNode.parentNode.firstChild.nodeValue,
+          showCancelButton: true,
+          confirmButtonText: 'Update',
+          cancelButtonText: 'Cancel',
+          inputValidator: (value) => {
+            if (!value) {
+              return 'You need to write something!';
+            }
+          }
+        }).then((result) => {
+          if (result.isConfirmed) {
+            event.target.parentNode.parentNode.firstChild.nodeValue = result.value;
+          }
+        });
+      }
 
 function dlt() {
-    parent.remove()
+    parent.innerHTML = ""
 }
