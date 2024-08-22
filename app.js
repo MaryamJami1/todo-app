@@ -84,7 +84,7 @@ function edit(event) {
 
 
 
-
+////////////////// delete all lists function
 
 function dlt() {
     parent.innerHTML = "";
